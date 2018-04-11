@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "[*] Starting to copy scripts"
+echo "[*] Copying script "$1 
+for proxy in $(awk '/Host zbx-prxy-*/ { print $2 }' ~/.ssh/config)
+    do 
+        echo "[*] Copying script to server : "$proxy
+        scp $1 $proxy":/home/zemzale/"
+    done
+echo "[*] Done coppying scripts"
